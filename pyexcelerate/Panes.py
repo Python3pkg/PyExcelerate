@@ -11,7 +11,7 @@ class Panes(object):
 	def __bool__(self):
 		return any((self.x, self.y))
 
-	def __nonzero__(self):
+	def __bool__(self):
 		return self.__bool__()
 
 	def __eq__(self, other):

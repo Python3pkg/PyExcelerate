@@ -168,7 +168,7 @@ def test_dense_sparse_styles():
 	
 def test_unicode_with_styles():
 	wb = Workbook()
-	ws = wb.new_sheet(u"ʇǝǝɥsǝpoɔıun")
-	ws[1][1].value = u'Körperschaft des öffentlichen'
+	ws = wb.new_sheet("ʇǝǝɥsǝpoɔıun")
+	ws[1][1].value = 'Körperschaft des öffentlichen'
 	ws.set_col_style(2, Style(size=0))
 	wb.save(get_output_path("unicode-styles.xlsx"))

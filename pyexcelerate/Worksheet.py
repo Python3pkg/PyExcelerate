@@ -66,7 +66,7 @@ class Worksheet(object):
 
 	@property
 	def col_styles(self):
-		return self._col_styles.items()
+		return list(self._col_styles.items())
 
 	@property
 	def name(self):
@@ -251,7 +251,7 @@ class Worksheet(object):
 	def get_xml_data(self):
 		# Precondition: styles are aligned. if not, then :v
 		# check if we have any row styles that don't have data
-		sparse_rows = sorted(filter(lambda x: x[0] >= len(self._dense_cells), six.iteritems(self._sparse_cells)))
+		sparse_rows = sorted([x for x in six.iteritems(self._sparse_cells) if x[0] >= len(self._dense_cells)])
 		for x, row in itertools.chain(enumerate(self._dense_cells[1:], 1), sparse_rows):
 			row_data = []
 			dense_columns = enumerate(row[1:], 1) if x < len(self._dense_cells) else []

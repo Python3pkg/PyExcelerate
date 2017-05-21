@@ -45,25 +45,25 @@ class Workbook(object):
 
 	def _align_styles(self):
 		Utility.YOLO = True
-		items = dict([(x, {}) for x in Workbook.STYLE_ATTRIBUTE_MAP.keys()])
+		items = dict([(x, {}) for x in list(Workbook.STYLE_ATTRIBUTE_MAP.keys())])
 		styles = {}
 		for index, style in enumerate(self._styles):
 			# compress style
 			if not style.is_default:
 				styles[style] = styles.get(style, len(styles) + 1)
 				setattr(style, Workbook.STYLE_ID_ATTRIBUTE, styles[style])
-		for style in styles.keys():
+		for style in list(styles.keys()):
 			# compress individual attributes
-			for attr, attr_id in Workbook.STYLE_ATTRIBUTE_MAP.items():
+			for attr, attr_id in list(Workbook.STYLE_ATTRIBUTE_MAP.items()):
 				obj = getattr(style, attr_id)
 				if obj and not obj.is_default: # we only care about it if it's not default
 					items[attr][obj] = items[attr].get(obj, len(items[attr]) + 1)
 					obj.id = items[attr][obj] # apply
-		for k, v in items.items():
+		for k, v in list(items.items()):
 			# ensure it's sorted properly
-			items[k] = [tup[0] for tup in sorted(v.items(), key=lambda x: x[1])]
+			items[k] = [tup[0] for tup in sorted(list(v.items()), key=lambda x: x[1])]
 		self._items = items
-		self._styles = [tup[0] for tup in sorted(styles.items(), key=lambda x: x[1])]
+		self._styles = [tup[0] for tup in sorted(list(styles.items()), key=lambda x: x[1])]
 		Utility.YOLO = False
 			
 	def __getattr__(self, name):

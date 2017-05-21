@@ -62,8 +62,8 @@ def test_to_excel_date():
 def test_unicode_str():
 	wb = Workbook()
 	ws = wb.new_sheet("Unicode test")
-	ws[1][1].value = u'ಠ_ಠ'
-	ws[1][2].value = u'(╯°□°）╯︵ ┻━┻'
-	ws[1][3].value = u'ᶘ ᵒᴥᵒᶅ'
-	ws[1][4].value = u'الله أكبر'
+	ws[1][1].value = 'ಠ_ಠ'
+	ws[1][2].value = '(╯°□°）╯︵ ┻━┻'
+	ws[1][3].value = 'ᶘ ᵒᴥᵒᶅ'
+	ws[1][4].value = 'الله أكبر'
 	wb.save(get_output_path("unicode-test.xlsx"))

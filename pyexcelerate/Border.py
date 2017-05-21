@@ -43,7 +43,7 @@ class Border(object):
 	
 	@staticmethod
 	def get_style_name(style):
-		for key, values in Border.STYLE_MAPPING.items():
+		for key, values in list(Border.STYLE_MAPPING.items()):
 			if style == key or style in values:
 				return key
 		# TODO: warn the user?

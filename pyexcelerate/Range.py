@@ -2,6 +2,7 @@ from . import DataTypes
 import six
 from . import Font, Fill, Format, Style
 from six.moves import reduce
+from functools import reduce
 
 #
 # Kevin and Kevin's fair warning: this class has been insanely optimized for speed. It is intended

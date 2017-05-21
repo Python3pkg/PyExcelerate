@@ -41,10 +41,10 @@ def lazy_set(self, attribute, default, value):
 
 if six.PY2:
 	def to_unicode(s):
-		if type(s) == unicode:
+		if type(s) == str:
 			return s
 		else:
-			return unicode(s, 'utf-8')
+			return str(s, 'utf-8')
 else:
 	def to_unicode(s):
 		return s

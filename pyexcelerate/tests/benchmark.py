@@ -262,14 +262,14 @@ def timeout_five(self, fnc, *args, **kwargs):
 				return f.result(timeout=5)
 
 def print_header():
-	print(("{:15}{:>20}{:>10}{:>17}{:>20}").format("%dx%d" % (ROWS, COLUMNS), "name", "time (s)", "file size (kB)", "memory usage (MB)"))
+	print((("{:15}{:>20}{:>10}{:>17}{:>20}").format("%dx%d" % (ROWS, COLUMNS), "name", "time (s)", "file size (kB)", "memory usage (MB)")))
 
 def run(f):
 	gc.collect()
 	time, filesize = f()
 	profile = memory_usage((f, ), interval=0.1)
 	memory = max(profile) - min(profile)
-	print(("{:>35}{:10.3f}{:17}{:20.3f}").format(*(f.__name__, time, filesize / 1024, memory)))
+	print((("{:>35}{:10.3f}{:17}{:20.3f}").format(*(f.__name__, time, filesize / 1024, memory))))
 
 def test_all():
 	global ROWS, COLUMNS
